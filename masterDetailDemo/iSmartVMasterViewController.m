@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.title = @"the master view";
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
@@ -65,8 +66,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *Identifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+    }
     NSDate *object = _objects[indexPath.row];
     cell.textLabel.text = [object description];
     return cell;
@@ -108,6 +112,9 @@
 {
     NSDate *object = _objects[indexPath.row];
     self.detailViewController.detailItem = object;
+#ifdef _test
+   // [self.navigationController pushViewController:nextController animated:YES];
+#endif
 }
 
 @end

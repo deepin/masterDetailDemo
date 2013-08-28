@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface iSmartVDetailViewController : UIViewController <UISplitViewControllerDelegate>
+#ifndef _test
+#define _test
+#endif
+@interface iSmartVDetailViewController : UITableViewController <UISplitViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) id detailItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+#ifdef _test
+@property (strong, nonatomic) NSArray *computers;
+#endif
+
 @end

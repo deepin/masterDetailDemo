@@ -19,6 +19,7 @@
 		263A43BD17C34D4E002CD65B /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 263A43BB17C34D4E002CD65B /* MainStoryboard.storyboard */; };
 		263A43C017C34D4E002CD65B /* iSmartVMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 263A43BF17C34D4E002CD65B /* iSmartVMasterViewController.m */; };
 		263A43C317C34D4E002CD65B /* iSmartVDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 263A43C217C34D4E002CD65B /* iSmartVDetailViewController.m */; };
+		267EA28517C7069F008F0C17 /* iSmartVDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267EA28417C7069F008F0C17 /* iSmartVDetailTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		263A43BF17C34D4E002CD65B /* iSmartVMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSmartVMasterViewController.m; sourceTree = "<group>"; };
 		263A43C117C34D4E002CD65B /* iSmartVDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSmartVDetailViewController.h; sourceTree = "<group>"; };
 		263A43C217C34D4E002CD65B /* iSmartVDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSmartVDetailViewController.m; sourceTree = "<group>"; };
+		267EA28317C7069F008F0C17 /* iSmartVDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSmartVDetailTableViewCell.h; path = customedCell/iSmartVDetailTableViewCell.h; sourceTree = "<group>"; };
+		267EA28417C7069F008F0C17 /* iSmartVDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSmartVDetailTableViewCell.m; path = customedCell/iSmartVDetailTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				263A43BF17C34D4E002CD65B /* iSmartVMasterViewController.m */,
 				263A43C117C34D4E002CD65B /* iSmartVDetailViewController.h */,
 				263A43C217C34D4E002CD65B /* iSmartVDetailViewController.m */,
+				267EA28317C7069F008F0C17 /* iSmartVDetailTableViewCell.h */,
+				267EA28417C7069F008F0C17 /* iSmartVDetailTableViewCell.m */,
 				263A43AA17C34D4D002CD65B /* Supporting Files */,
 			);
 			path = masterDetailDemo;
@@ -183,6 +188,7 @@
 				263A43B417C34D4D002CD65B /* iSmartVAppDelegate.m in Sources */,
 				263A43C017C34D4E002CD65B /* iSmartVMasterViewController.m in Sources */,
 				263A43C317C34D4E002CD65B /* iSmartVDetailViewController.m in Sources */,
+				267EA28517C7069F008F0C17 /* iSmartVDetailTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +313,7 @@
 				263A43C817C34D4E002CD65B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
