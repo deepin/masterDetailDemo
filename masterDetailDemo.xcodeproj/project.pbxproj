@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2600271117CD90B50052DC2C /* f485b7df2b84d26895ee3779.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2600271017CD90B50052DC2C /* f485b7df2b84d26895ee3779.jpg */; };
+		2600271417CD93680052DC2C /* iSmartVShowImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2600271317CD93680052DC2C /* iSmartVShowImageViewController.m */; };
 		263A43A417C34D4D002CD65B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263A43A317C34D4D002CD65B /* UIKit.framework */; };
 		263A43A617C34D4D002CD65B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263A43A517C34D4D002CD65B /* Foundation.framework */; };
 		263A43A817C34D4D002CD65B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263A43A717C34D4D002CD65B /* CoreGraphics.framework */; };
@@ -25,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		2600271017CD90B50052DC2C /* f485b7df2b84d26895ee3779.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = f485b7df2b84d26895ee3779.jpg; path = masterDetailDemo/f485b7df2b84d26895ee3779.jpg; sourceTree = "<group>"; };
+		2600271217CD93680052DC2C /* iSmartVShowImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSmartVShowImageViewController.h; path = masterDetailDemo/showimage/iSmartVShowImageViewController.h; sourceTree = "<group>"; };
+		2600271317CD93680052DC2C /* iSmartVShowImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSmartVShowImageViewController.m; path = masterDetailDemo/showimage/iSmartVShowImageViewController.m; sourceTree = "<group>"; };
 		263A43A017C34D4D002CD65B /* masterDetailDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = masterDetailDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		263A43A317C34D4D002CD65B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		263A43A517C34D4D002CD65B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -69,9 +72,19 @@
 			name = resources;
 			sourceTree = "<group>";
 		};
+		2600271517CD936F0052DC2C /* showimage */ = {
+			isa = PBXGroup;
+			children = (
+				2600271217CD93680052DC2C /* iSmartVShowImageViewController.h */,
+				2600271317CD93680052DC2C /* iSmartVShowImageViewController.m */,
+			);
+			name = showimage;
+			sourceTree = "<group>";
+		};
 		263A439717C34D4D002CD65B = {
 			isa = PBXGroup;
 			children = (
+				2600271517CD936F0052DC2C /* showimage */,
 				2600270F17CD90990052DC2C /* resources */,
 				263A43A917C34D4D002CD65B /* masterDetailDemo */,
 				263A43A217C34D4D002CD65B /* Frameworks */,
@@ -201,6 +214,7 @@
 				263A43C017C34D4E002CD65B /* iSmartVMasterViewController.m in Sources */,
 				263A43C317C34D4E002CD65B /* iSmartVDetailViewController.m in Sources */,
 				267EA28517C7069F008F0C17 /* iSmartVDetailTableViewCell.m in Sources */,
+				2600271417CD93680052DC2C /* iSmartVShowImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

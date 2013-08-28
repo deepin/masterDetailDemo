@@ -157,10 +157,10 @@
             </objects>
             <point key="canvasLocation" x="164" y="441"/>
         </scene>
-        <!--View Controller-->
+        <!--I SmartV Show Image View Controller-->
         <scene sceneID="oCs-zh-xkK">
             <objects>
-                <viewController id="0cG-fD-kj1" sceneMemberID="viewController">
+                <viewController id="0cG-fD-kj1" customClass="iSmartVShowImageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gJ9-Zh-FDT">
                         <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -198,27 +198,6 @@
             <point key="canvasLocation" x="-781" y="158"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="iSmartVDetailTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/iSmartVDetailTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="iSmartVDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/iSmartVDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="iSmartVMasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/iSmartVMasterViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
