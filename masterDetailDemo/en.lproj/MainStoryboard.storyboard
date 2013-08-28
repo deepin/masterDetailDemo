@@ -177,6 +177,9 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xyg-Ls-2OP"/>
+                    <connections>
+                        <outlet property="theimageview" destination="Gvh-N0-QPy" id="eLL-mz-0KN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ukb-IR-PR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

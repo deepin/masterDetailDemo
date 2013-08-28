@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface iSmartVShowImageViewController : UIViewController
-@property (strong, nonatomic) UIImageView *theimageview;
+
+@property (weak, nonatomic) IBOutlet UIImageView *theimageview;
+
 @end

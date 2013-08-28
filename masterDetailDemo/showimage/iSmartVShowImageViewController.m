@@ -28,6 +28,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    UIImage *animage = [UIImage imageNamed:@"f485b7df2b84d26895ee3779.jpg"];
+    [theimageview initWithImage:animage];
 }
 
 - (void)didReceiveMemoryWarning
