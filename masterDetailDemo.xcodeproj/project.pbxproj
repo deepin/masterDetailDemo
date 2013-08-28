@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2600271117CD90B50052DC2C /* f485b7df2b84d26895ee3779.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2600271017CD90B50052DC2C /* f485b7df2b84d26895ee3779.jpg */; };
 		263A43A417C34D4D002CD65B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263A43A317C34D4D002CD65B /* UIKit.framework */; };
 		263A43A617C34D4D002CD65B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263A43A517C34D4D002CD65B /* Foundation.framework */; };
 		263A43A817C34D4D002CD65B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263A43A717C34D4D002CD65B /* CoreGraphics.framework */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2600271017CD90B50052DC2C /* f485b7df2b84d26895ee3779.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = f485b7df2b84d26895ee3779.jpg; path = masterDetailDemo/f485b7df2b84d26895ee3779.jpg; sourceTree = "<group>"; };
 		263A43A017C34D4D002CD65B /* masterDetailDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = masterDetailDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		263A43A317C34D4D002CD65B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		263A43A517C34D4D002CD65B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,9 +61,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2600270F17CD90990052DC2C /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				2600271017CD90B50052DC2C /* f485b7df2b84d26895ee3779.jpg */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
 		263A439717C34D4D002CD65B = {
 			isa = PBXGroup;
 			children = (
+				2600270F17CD90990052DC2C /* resources */,
 				263A43A917C34D4D002CD65B /* masterDetailDemo */,
 				263A43A217C34D4D002CD65B /* Frameworks */,
 				263A43A117C34D4D002CD65B /* Products */,
@@ -174,6 +185,7 @@
 				263A43B817C34D4D002CD65B /* Default@2x.png in Resources */,
 				263A43BA17C34D4E002CD65B /* Default-568h@2x.png in Resources */,
 				263A43BD17C34D4E002CD65B /* MainStoryboard.storyboard in Resources */,
+				2600271117CD90B50052DC2C /* f485b7df2b84d26895ee3779.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

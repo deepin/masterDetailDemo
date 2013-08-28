@@ -140,7 +140,7 @@
                                 <connections>
                                     <outlet property="dateLabel" destination="ow6-SN-jrT" id="58s-M3-RhF"/>
                                     <outlet property="titleLabel" destination="mQX-UD-F3p" id="ej3-KR-UwE"/>
-                                    <segue destination="5Fy-ru-OW7" kind="push" id="mvg-wy-KGZ"/>
+                                    <segue destination="0cG-fD-kj1" kind="push" id="XcC-ts-hvI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -155,36 +155,32 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rcb-EC-s7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="168" y="445"/>
+            <point key="canvasLocation" x="164" y="441"/>
         </scene>
-        <!--View Controller - the content view-->
-        <scene sceneID="wKj-CF-Z2q">
+        <!--View Controller-->
+        <scene sceneID="oCs-zh-xkK">
             <objects>
-                <viewController title="the content view" id="5Fy-ru-OW7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pZN-VB-LEP">
+                <viewController id="0cG-fD-kj1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gJ9-Zh-FDT">
                         <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dgz-lc-DGQ">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gvh-N0-QPy"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Dgz-lc-DGQ" firstAttribute="top" secondItem="pZN-VB-LEP" secondAttribute="top" constant="363" id="oQN-Ub-bbC"/>
-                            <constraint firstItem="Dgz-lc-DGQ" firstAttribute="leading" secondItem="pZN-VB-LEP" secondAttribute="leading" constant="298" id="sbZ-Zg-pu3"/>
+                            <constraint firstItem="Gvh-N0-QPy" firstAttribute="top" secondItem="gJ9-Zh-FDT" secondAttribute="top" type="default" id="7sl-L0-vqm"/>
+                            <constraint firstItem="Gvh-N0-QPy" firstAttribute="bottom" secondItem="gJ9-Zh-FDT" secondAttribute="bottom" type="default" id="FBX-mD-YLJ"/>
+                            <constraint firstItem="Gvh-N0-QPy" firstAttribute="leading" secondItem="gJ9-Zh-FDT" secondAttribute="leading" type="default" id="eW1-ap-P8H"/>
+                            <constraint firstItem="Gvh-N0-QPy" firstAttribute="trailing" secondItem="gJ9-Zh-FDT" secondAttribute="trailing" type="default" id="oGD-OD-L9l"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="the content view" id="usi-Fg-pyc">
-                        <barButtonItem key="backBarButtonItem" title="back" id="X9B-pi-am8"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Xyg-Ls-2OP"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vCP-gi-GKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ukb-IR-PR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="600" y="656"/>
+            <point key="canvasLocation" x="956" y="320"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="50">
