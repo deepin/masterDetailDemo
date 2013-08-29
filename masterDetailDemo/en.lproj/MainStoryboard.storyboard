@@ -161,7 +161,7 @@
         <scene sceneID="oCs-zh-xkK">
             <objects>
                 <viewController id="0cG-fD-kj1" customClass="iSmartVShowImageViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gJ9-Zh-FDT">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gJ9-Zh-FDT">
                         <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>

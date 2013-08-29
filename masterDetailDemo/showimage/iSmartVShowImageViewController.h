@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "iSmartVHTTPClient.h"
 @interface iSmartVShowImageViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *theimageview;
-
+@property (assign, nonatomic) CGRect *imageViewRect;
 @end

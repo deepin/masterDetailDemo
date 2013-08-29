@@ -13,5 +13,6 @@
 @interface iSmartVMasterViewController : UITableViewController
 
 @property (strong, nonatomic) iSmartVDetailViewController *detailViewController;
-
+@property (strong, nonatomic) NSMutableArray *patients;
+@property (strong, nonatomic) NSMutableArray *reports;
 @end

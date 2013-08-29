@@ -9,13 +9,15 @@
 #import "iSmartVMasterViewController.h"
 
 #import "iSmartVDetailViewController.h"
-
+#import "iSmartVHTTPClient.h"
 @interface iSmartVMasterViewController () {
     NSMutableArray *_objects;
 }
 @end
 
 @implementation iSmartVMasterViewController
+@synthesize patients;
+@synthesize reports;
 
 - (void)awakeFromNib
 {
@@ -42,7 +44,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
+- (void) refreshFromServer: (id)sender
+{
+    //fill mutablearray -- patients and reports -- with new data
+    [self.tableView reloadData];
+}
+/*- (void)insertNewObject:(id)sender
 {
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
@@ -50,6 +57,15 @@
     [_objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}*/
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        //NSDate *object = [[_objectsArray objectAtIndex: indexPath.section] objectAtIndex:indexPath.row ];
+        //[[segue destinationViewController] setDetailItem:object];
+    }
 }
 
 #pragma mark - Table View
@@ -116,5 +132,43 @@
    // [self.navigationController pushViewController:nextController animated:YES];
 #endif
 }
+
+
+
+
+
+
+
+-(void) iSmartVHTTPClient:(iSmartVHTTPClient *)client didFailWithError:(NSError *)error
+{
+    NSLog(@"Error");
+    //self.testResult.text = @"DownLoad Error";
+}
+
+-(void) iSmartVHTTPClient:(iSmartVHTTPClient *)client didUpdateWithPatient:(id)newPatient
+{
+    
+}
+
+-(void) iSmartVHTTPClient:(iSmartVHTTPClient *)client didUpdateWithReport:(id)newReport
+{
+    //self.report = newReport;
+    //NSLog(@"Successfully Got Report:%@",self.report);
+    
+    
+    //Report *reportFromService  = [[Report alloc] init];
+    //reportFromService.checkTimeStr=[self.report objectForKey:@"CheckTimeStr"];
+    //NSDictionary *patientInfo = [self.report objectForKey:@"PatientInfo"];
+    //reportFromService.patientID = [patientInfo objectForKey:@"Id"];
+    
+    
+    //self.testResult.text = reportFromService.patientID;
+    
+    
+    //NSLog(@"Time:%@",reportFromService.createDate);
+    //self.testResult.text = @"Success!";
+    
+}
+
 
 @end
