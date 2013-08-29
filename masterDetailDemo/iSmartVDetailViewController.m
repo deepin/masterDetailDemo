@@ -8,14 +8,18 @@
 
 #import "iSmartVDetailViewController.h"
 #import "iSmartVDetailTableViewCell.h" 
-
+#import "iSmartVShowImageViewController.h"
+#import "iSmartVAppDelegate.h"  
 #ifndef _test
 #define _test
 #endif
 
+
 @interface iSmartVDetailViewController ()
+
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
+
 @end
 
 @implementation iSmartVDetailViewController
@@ -49,6 +53,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    UISplitViewController *splitviewctrl = self.splitViewController;
+    UIViewController *masterController = [splitviewctrl.viewControllers objectAtIndex:0];
+    self.masterWidth = masterController.view.frame.size.width;
+    
     self.title = @"the detail view";
 #ifdef _test
     NSDictionary *row1 = [[NSDictionary alloc] initWithObjectsAndKeys: @"front", @"viewDirection", @"2013-08-01-10:20:34", @"date", nil];
@@ -100,6 +108,49 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (iSmartVShowImageViewController*) getContentView
+{
+    static iSmartVShowImageViewController *contentViewController;
+    if(!contentViewController){
+        contentViewController = [[iSmartVShowImageViewController alloc] initWithNibName:@"contentView" bundle:nil];
+        
+    }
+    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
+    {
+        iSmartVAppDelegate *myDelegate2 = (((iSmartVAppDelegate*) [UIApplication sharedApplication].delegate));
+        CGRect maxframe2 = myDelegate2.window.frame;
+        CGRect swap = CGRectMake(maxframe2.origin.x, maxframe2.origin.y, maxframe2.size.height, maxframe2.size.width);
+        contentViewController.view.frame = swap;
+    }
+    
+    return contentViewController;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        
+    }
+    iSmartVAppDelegate *myDelegate = (((iSmartVAppDelegate*) [UIApplication sharedApplication].delegate));
+    //UIImageView *theimgview = (UIImageView *)[myDelegate.window viewWithTag:2];
+    ////prepare data and give content view
+    //UIView *destview = [myDelegate.window viewWithTag:1];
+    iSmartVShowImageViewController *contentViewController = [self getContentView];
+    
+    [UIView beginAnimations:@"flipping view" context:nil];
+    [UIView setAnimationDuration:1];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft
+                           forView:self.view
+                             cache:NO];
+    [myDelegate.window addSubview:contentViewController.view];
+    [myDelegate.window bringSubviewToFront:contentViewController.view];
+    
+	[UIView commitAnimations];
+
+}
+
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
@@ -107,6 +158,24 @@
         //NSDate *object = [[_objectsArray objectAtIndex: indexPath.section] objectAtIndex:indexPath.row ];
         //[[segue destinationViewController] setDetailItem:object];
     }
+
+/*    iSmartVShowImageViewController *dest = segue.destinationViewController;
+    dest.masterWidth = self.masterWidth;//[dest setValue: self.masterWidth forKey:@"masterWidth" ];
+    
+    iSmartVAppDelegate *myDelegate = (((iSmartVAppDelegate*) [UIApplication sharedApplication].delegate));
+    
+    
+    CGRect newframe =  myDelegate.window.frame;
+    float tmp = newframe.size.width;
+    newframe.size.width = newframe.size.height;
+    newframe.size.height = tmp;
+    CGRect newframe2 = CGRectMake(newframe.origin.x, newframe.origin.y, newframe.size.width, newframe.size.height);
+    CGRect newframe3 = CGRectMake(newframe.origin.x, newframe.origin.y, newframe.size.width, newframe.size.height);
+    CGRect newframe4 = CGRectMake(newframe.origin.x, newframe.origin.y, newframe.size.width, newframe.size.height);
+    self.view.frame = newframe2;
+    dest.view.frame = newframe3;
+    dest.theimageview.frame = newframe4;
+    [myDelegate.window bringSubviewToFront:self.view];*/
 }
 
 #pragma mark - Split view

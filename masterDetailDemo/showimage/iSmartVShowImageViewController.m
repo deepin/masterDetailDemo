@@ -10,7 +10,7 @@
 #import "iSmartVHTTPClient.h"
 #import "Report.h"
 #import "AFImageRequestOperation.h"
-
+#import "iSmartVAppDelegate.h"  
 @interface iSmartVShowImageViewController ()
 
 @end 
@@ -18,6 +18,7 @@
 @implementation iSmartVShowImageViewController
 @synthesize theimageview;
 @synthesize imageViewRect;
+@synthesize masterWidth;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,21 +32,25 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-/*    UIImage *animage = [UIImage imageNamed:@"f485b7df2b84d26895ee3779.jpg"];
+    UIImage *animage = [UIImage imageNamed:@"f485b7df2b84d26895ee3779.jpg"];
     [theimageview setImage:animage];//]initWithImage:animage];
     //imageViewRect = [theimageview];
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc]
                                        initWithTarget:self
                                        action:@selector(doPinch:)];
-    [self.view addGestureRecognizer:pinch];*/
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.19.18.184:8000/ReportIosServer/2013/07/22/ChenDeGao_10002_150212/page/1"]];
+    [self.view addGestureRecognizer:pinch];
+    //self.wantsFullScreenLayout = YES;
+
+
+/*    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.19.18.184:8000/ReportIosServer/2013/07/22/ChenDeGao_10002_150212/page/1"]];
     AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request imageProcessingBlock:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         self.theimageview.image=image;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"EROOR%@",error);
     }];
-    [operation start];
+    [operation start];*/
 }
+
 
 - (void)doPinch:(UIPinchGestureRecognizer *)pinch
 {
@@ -91,4 +96,8 @@
     //[self performSelector:@selector(eraseText) withObject:nil afterDelay:2];
 }
 
+- (IBAction)back2split:(id)sender
+{
+    [self.view removeFromSuperview];
+}
 @end

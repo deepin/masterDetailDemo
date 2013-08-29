@@ -10,15 +10,17 @@
 
 #import "iSmartVDetailViewController.h"
 #import "iSmartVHTTPClient.h"
+
 @interface iSmartVMasterViewController () {
     NSMutableArray *_objects;
+    
 }
 @end
 
 @implementation iSmartVMasterViewController
 @synthesize patients;
 @synthesize reports;
-
+@synthesize defaultWidth;
 - (void)awakeFromNib
 {
     self.clearsSelectionOnViewWillAppear = NO;
@@ -30,6 +32,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.defaultWidth = self.view.frame.size.width;
+    
     self.title = @"the master view";
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 

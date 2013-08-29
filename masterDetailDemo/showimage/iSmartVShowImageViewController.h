@@ -10,6 +10,8 @@
 #import "iSmartVHTTPClient.h"
 @interface iSmartVShowImageViewController : UIViewController
 
+- (IBAction)back2split:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *theimageview;
 @property (assign, nonatomic) CGRect *imageViewRect;
+@property float masterWidth;
 @end

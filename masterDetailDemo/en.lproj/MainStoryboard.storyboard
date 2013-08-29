@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="13" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="206" y="-617"/>
+            <point key="canvasLocation" x="467" y="-623"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="18">
@@ -33,12 +33,12 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-873" y="-644"/>
+            <point key="canvasLocation" x="-1143" y="-732"/>
         </scene>
         <!--I SmartV Master View Controller - Master-->
         <scene sceneID="24">
             <objects>
-                <tableViewController storyboardIdentifier="" title="Master" clearsSelectionOnViewWillAppear="NO" id="19" customClass="iSmartVMasterViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="" autoresizesArchivedViewToFullSize="NO" title="Master" modalPresentationStyle="currentContext" clearsSelectionOnViewWillAppear="NO" id="19" customClass="iSmartVMasterViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="20">
                         <rect key="frame" x="0.0" y="64" width="320" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,10 +69,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Master" id="40"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="BAZ-77-4bt">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="540" y="-617"/>
+            <point key="canvasLocation" x="798" y="-623"/>
         </scene>
         <!--I SmartV Detail View Controller - detail_nt-->
         <scene sceneID="HzF-KB-7LL">
@@ -140,7 +143,6 @@
                                 <connections>
                                     <outlet property="dateLabel" destination="ow6-SN-jrT" id="58s-M3-RhF"/>
                                     <outlet property="titleLabel" destination="mQX-UD-F3p" id="ej3-KR-UwE"/>
-                                    <segue destination="0cG-fD-kj1" kind="push" id="XcC-ts-hvI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -155,35 +157,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rcb-EC-s7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="164" y="441"/>
-        </scene>
-        <!--I SmartV Show Image View Controller-->
-        <scene sceneID="oCs-zh-xkK">
-            <objects>
-                <viewController id="0cG-fD-kj1" customClass="iSmartVShowImageViewController" sceneMemberID="viewController">
-                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gJ9-Zh-FDT">
-                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gvh-N0-QPy"/>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Gvh-N0-QPy" firstAttribute="top" secondItem="gJ9-Zh-FDT" secondAttribute="top" type="default" id="7sl-L0-vqm"/>
-                            <constraint firstItem="Gvh-N0-QPy" firstAttribute="bottom" secondItem="gJ9-Zh-FDT" secondAttribute="bottom" type="default" id="FBX-mD-YLJ"/>
-                            <constraint firstItem="Gvh-N0-QPy" firstAttribute="leading" secondItem="gJ9-Zh-FDT" secondAttribute="leading" type="default" id="eW1-ap-P8H"/>
-                            <constraint firstItem="Gvh-N0-QPy" firstAttribute="trailing" secondItem="gJ9-Zh-FDT" secondAttribute="trailing" type="default" id="oGD-OD-L9l"/>
-                        </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Xyg-Ls-2OP"/>
-                    <connections>
-                        <outlet property="theimageview" destination="Gvh-N0-QPy" id="eLL-mz-0KN"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ukb-IR-PR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="956" y="320"/>
+            <point key="canvasLocation" x="-385" y="212"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="50">
@@ -193,7 +167,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vVc-Wd-8R6" kind="relationship" relationship="rootViewController" id="arS-H9-lJh"/>
+                        <segue destination="vVc-Wd-8R6" kind="relationship" relationship="rootViewController" id="ReW-PV-IN2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -201,6 +175,30 @@
             <point key="canvasLocation" x="-781" y="158"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+        <class className="iSmartVDetailTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iSmartVDetailTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="iSmartVDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iSmartVDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="iSmartVMasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/iSmartVMasterViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

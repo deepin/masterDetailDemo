@@ -15,4 +15,5 @@
 @property (strong, nonatomic) iSmartVDetailViewController *detailViewController;
 @property (strong, nonatomic) NSMutableArray *patients;
 @property (strong, nonatomic) NSMutableArray *reports;
+@property float defaultWidth;
 @end
