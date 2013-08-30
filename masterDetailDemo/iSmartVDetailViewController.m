@@ -85,6 +85,14 @@
 #endif
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super  viewWillAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 #ifdef _test
     static NSString *CellTableIdentifier = @"CellTableIdentifier";
@@ -113,15 +121,10 @@
     static iSmartVShowImageViewController *contentViewController;
     if(!contentViewController){
         contentViewController = [[iSmartVShowImageViewController alloc] initWithNibName:@"contentView" bundle:nil];
-        
+       // CGRect thescreen = [[UIScreen mainScreen] bounds];
+       // [contentViewController.view setFrame:thescreen];
     }
-    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
-    {
-        iSmartVAppDelegate *myDelegate2 = (((iSmartVAppDelegate*) [UIApplication sharedApplication].delegate));
-        CGRect maxframe2 = myDelegate2.window.frame;
-        CGRect swap = CGRectMake(maxframe2.origin.x, maxframe2.origin.y, maxframe2.size.height, maxframe2.size.width);
-        contentViewController.view.frame = swap;
-    }
+
     
     return contentViewController;
 }
@@ -130,6 +133,7 @@
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         
+        
     }
     iSmartVAppDelegate *myDelegate = (((iSmartVAppDelegate*) [UIApplication sharedApplication].delegate));
     //UIImageView *theimgview = (UIImageView *)[myDelegate.window viewWithTag:2];
@@ -137,14 +141,10 @@
     //UIView *destview = [myDelegate.window viewWithTag:1];
     iSmartVShowImageViewController *contentViewController = [self getContentView];
     
-    [UIView beginAnimations:@"flipping view" context:nil];
+    [UIView beginAnimations:@"showUIImageView" context:nil];
     [UIView setAnimationDuration:1];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft
-                           forView:self.view
-                             cache:NO];
     [myDelegate.window addSubview:contentViewController.view];
-    [myDelegate.window bringSubviewToFront:contentViewController.view];
-    
+   // [myDelegate.window bringSubviewToFront:contentViewController.view];
 	[UIView commitAnimations];
 
 }

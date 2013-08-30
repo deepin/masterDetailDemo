@@ -28,6 +28,15 @@
     return self;
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    } else {
+        return YES;
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -50,8 +59,53 @@
     }];
     [operation start];*/
 }
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation) interfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
+        ;
+    }
+    else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft){
+         self.view.transform = CGAffineTransformMakeRotation(90.0);
+    }
+    else if(interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+        self.view.transform = CGAffineTransformMakeRotation(-90.0);
+    }
+    else {
+       self.view.transform = CGAffineTransformMakeRotation(180.0);
+    }
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super  viewWillAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    
+    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
+    {
+        CGRect thescreen = [[UIScreen mainScreen] bounds];
+        thescreen.size.height += [UIApplication
+                                  sharedApplication].statusBarFrame.size.height;
+        [self.view setFrame: thescreen];
+        [self.theimageview setFrame: thescreen];
 
+    }
+    else{
+        CGRect thescreen = [[UIScreen mainScreen] bounds];
+        thescreen.size.height += [UIApplication
+                                  sharedApplication].statusBarFrame.size.height;
+        CGRect swap = CGRectMake(thescreen.origin.x, thescreen.origin.y, thescreen.size.height, thescreen.size.width);
+        self.view.frame = swap;
+    }
+    //CGRect thescreen = [[UIScreen mainScreen] bounds];
+    //[self.view setFrame:thescreen];
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super  viewWillDisappear:animated];
+    
+   // [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+}
 - (void)doPinch:(UIPinchGestureRecognizer *)pinch
 {
     if (pinch.state == UIGestureRecognizerStateBegan) {
@@ -99,5 +153,6 @@
 - (IBAction)back2split:(id)sender
 {
     [self.view removeFromSuperview];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:Nil];
 }
 @end
