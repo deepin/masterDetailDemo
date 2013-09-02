@@ -23,6 +23,7 @@
 @synthesize date;
 @synthesize titleLabel;
 @synthesize dateLabel;
+@synthesize icon;
 
 #ifdef _codeCell
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

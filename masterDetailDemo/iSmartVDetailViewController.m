@@ -58,7 +58,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //fill customed cell with reports
-    
+    static NSString *CellTableIdentifier = @"CellTableIdentifier";
+    iSmartVDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                                        CellTableIdentifier];
+    if (cell == nil) {
+        cell = [[iSmartVDetailTableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
+    }
+    NSUInteger row = [indexPath row];
+    NSDictionary *rowData = [self.reports objectAtIndex:row];
+    //cell.title = [rowData objectForKey:@"viewDirection"];
+    //cell.date = [rowData objectForKey:@"date"];
+    //cell.icon = [rowData objectForKey:@"icon"];
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning

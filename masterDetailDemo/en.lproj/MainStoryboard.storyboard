@@ -101,6 +101,9 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llx-RX-2wV">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="FWc-Ys-DUV"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,19 +117,23 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ow6-SN-jrT">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="GjL-tO-DDu"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSN-DG-uCs">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="83" id="mD6-YM-1vh"/>
+                                                <constraint firstAttribute="height" constant="43" id="uJ0-48-vrC"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="U3b-2G-aOt" firstAttribute="leading" secondItem="fDh-8x-Pdp" secondAttribute="leading" constant="47" id="3mR-1v-WgD"/>
                                     <constraint firstItem="Llx-RX-2wV" firstAttribute="trailing" secondItem="U3b-2G-aOt" secondAttribute="trailing" type="default" id="5zT-vY-YUB"/>
+                                    <constraint firstAttribute="trailing" secondItem="JSN-DG-uCs" secondAttribute="trailing" constant="115" id="Cdl-du-esh"/>
                                     <constraint firstItem="U3b-2G-aOt" firstAttribute="top" secondItem="mQX-UD-F3p" secondAttribute="top" type="default" id="Dq9-Kz-SpI"/>
                                     <constraint firstItem="mQX-UD-F3p" firstAttribute="leading" secondItem="fDh-8x-Pdp" secondAttribute="leading" constant="164" id="KGR-kt-6jm"/>
                                     <constraint firstItem="ow6-SN-jrT" firstAttribute="leading" secondItem="mQX-UD-F3p" secondAttribute="leading" type="default" id="UhI-nq-3dH"/>
@@ -134,11 +141,12 @@
                                     <constraint firstItem="ow6-SN-jrT" firstAttribute="trailing" secondItem="mQX-UD-F3p" secondAttribute="trailing" type="default" id="V4f-r0-yMf"/>
                                     <constraint firstItem="Llx-RX-2wV" firstAttribute="leading" secondItem="U3b-2G-aOt" secondAttribute="leading" type="default" id="ZIf-eK-Gv4"/>
                                     <constraint firstItem="ow6-SN-jrT" firstAttribute="baseline" secondItem="Llx-RX-2wV" secondAttribute="baseline" type="default" id="aHf-gc-XAb"/>
+                                    <constraint firstItem="JSN-DG-uCs" firstAttribute="top" secondItem="fDh-8x-Pdp" secondAttribute="top" type="default" id="xUd-ny-GM9"/>
                                     <constraint firstItem="U3b-2G-aOt" firstAttribute="top" secondItem="fDh-8x-Pdp" secondAttribute="top" constant="2" id="y9M-7Y-5Xc"/>
-                                    <constraint firstItem="ow6-SN-jrT" firstAttribute="top" secondItem="fDh-8x-Pdp" secondAttribute="top" constant="19" id="zyg-81-nT1"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dateLabel" destination="ow6-SN-jrT" id="58s-M3-RhF"/>
+                                    <outlet property="icon" destination="JSN-DG-uCs" id="84n-Oc-hH2"/>
                                     <outlet property="titleLabel" destination="mQX-UD-F3p" id="ej3-KR-UwE"/>
                                 </connections>
                             </tableViewCell>
@@ -154,7 +162,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rcb-EC-s7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117" y="280"/>
+            <point key="canvasLocation" x="-103" y="333"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="50">
@@ -172,27 +180,6 @@
             <point key="canvasLocation" x="-781" y="158"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="iSmartVDetailTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/iSmartVDetailTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="iSmartVDetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/iSmartVDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="iSmartVMasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/iSmartVMasterViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
