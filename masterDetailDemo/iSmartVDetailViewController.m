@@ -140,7 +140,9 @@
     ////prepare data and give content view
     //UIView *destview = [myDelegate.window viewWithTag:1];
     iSmartVShowImageViewController *contentViewController = [self getContentView];
-    
+    if ([contentViewController respondsToSelector:@selector(setTheimage:)]) {
+        [contentViewController setValue:[UIImage imageNamed:@"f485b7df2b84d26895ee3779.jpg"] forKey:@"theimage"];
+    }
     [UIView beginAnimations:@"showUIImageView" context:nil];
     [UIView setAnimationDuration:1];
     [myDelegate.window addSubview:contentViewController.view];

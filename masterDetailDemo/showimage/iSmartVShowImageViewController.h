@@ -11,7 +11,10 @@
 @interface iSmartVShowImageViewController : UIViewController
 
 - (IBAction)back2split:(id)sender;
-@property (weak, nonatomic) IBOutlet UIImageView *theimageview;
+@property (strong, nonatomic)  UIImageView *theimageview;
+@property (strong, nonatomic)  UIImage *theimage;
 @property (assign, nonatomic) CGRect *imageViewRect;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property float masterWidth;
+//@property (strong, nonatomic)
 @end

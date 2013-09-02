@@ -17,6 +17,7 @@
 
 @implementation iSmartVShowImageViewController
 @synthesize theimageview;
+@synthesize theimage;
 @synthesize imageViewRect;
 @synthesize masterWidth;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -24,12 +25,20 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+       // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willAnimateRotationToInterfaceOrientation:) name:@"willAnimateRotationToInterfaceOrientation" object:nil];
     }
     return self;
 }
+- (void)willAnimateRotationToInterfaceOrientation:(NSNotification *)notification {
+    UIInterfaceOrientation toOrientation = (UIInterfaceOrientation)[notification.userInfo[@"toOrientation"] intValue];
+    NSTimeInterval duration = (UIInterfaceOrientation)[notification.userInfo[@"duration"] floatValue];
+    [self willAnimateRotationToInterfaceOrientation:toOrientation duration:duration];
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    return YES;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
     } else {
@@ -41,14 +50,36 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    UIImage *animage = [UIImage imageNamed:@"f485b7df2b84d26895ee3779.jpg"];
-    [theimageview setImage:animage];//]initWithImage:animage];
+    //UIImage *animage = [UIImage imageNamed:@"f485b7df2b84d26895ee3779.jpg"];
+    //[theimageview setImage:animage];//]initWithImage:animage];
     //imageViewRect = [theimageview];
     UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc]
                                        initWithTarget:self
                                        action:@selector(doPinch:)];
     [self.view addGestureRecognizer:pinch];
     //self.wantsFullScreenLayout = YES;
+    CGRect thescreen = [[UIScreen mainScreen] bounds];
+    
+   /* if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)){
+        float tmp = thescreen.size.width;
+        thescreen.size.width = thescreen.size.height;
+        thescreen.size.height = tmp;
+    }*/
+    
+    self.view.frame = thescreen;
+    if(!theimageview){
+        
+        theimageview = [[UIImageView alloc] initWithFrame:thescreen];
+        if(theimageview){
+            theimageview.contentMode = UIViewContentModeScaleAspectFill;
+            
+        }
+        [self.view insertSubview:theimageview belowSubview: _backButton];
+        // CGRect thescreen = [[UIScreen mainScreen] bounds];
+        // [contentViewController.view setFrame:thescreen];
+        //theimageview.transform = CGAffineTransformMakeScale(0.6f, 0.6f);
+
+    }
 
 
 /*    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.19.18.184:8000/ReportIosServer/2013/07/22/ChenDeGao_10002_150212/page/1"]];
@@ -60,28 +91,95 @@
     [operation start];*/
 }
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation) interfaceOrientation duration:(NSTimeInterval)duration
-{
-    if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
-        ;
+{   
+   NSLog(@"noti got");
+    
+    CGRect thescreen = [[UIScreen mainScreen] bounds];
+    float tmp = thescreen.size.width;
+    thescreen.size.width = thescreen.size.height;
+    thescreen.size.height = tmp;
+    
+    if (UIInterfaceOrientationIsPortrait( UIInterfaceOrientationPortrait)) {
+        self.view.transform = CGAffineTransformIdentity;
+        self.view.transform = CGAffineTransformMakeRotation(0);
+        self.view.bounds = [[UIScreen mainScreen] bounds];
+        
+        self.theimageview.transform = CGAffineTransformIdentity;
+        self.theimageview.transform = CGAffineTransformMakeRotation(0);
+        self.theimageview.bounds = [[UIScreen mainScreen] bounds];
     }
     else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft){
-         self.view.transform = CGAffineTransformMakeRotation(90.0);
+        self.view.transform = CGAffineTransformIdentity;
+        self.view.transform = CGAffineTransformMakeRotation(M_PI /  (-2.0));
+        self.view.bounds = thescreen;
+        
+        self.theimageview.transform = CGAffineTransformIdentity;
+        self.theimageview.transform = CGAffineTransformMakeRotation(M_PI /  (-2.0));
+        self.theimageview.bounds = [[UIScreen mainScreen] bounds];
     }
     else if(interfaceOrientation == UIInterfaceOrientationLandscapeRight){
-        self.view.transform = CGAffineTransformMakeRotation(-90.0);
+        self.view.transform = CGAffineTransformIdentity;
+        self.view.transform = CGAffineTransformMakeRotation(M_PI / (2.0));
+        self.view.bounds = thescreen;
+        
+        self.theimageview.transform = CGAffineTransformIdentity;
+        self.theimageview.transform = CGAffineTransformMakeRotation(M_PI /  (2.0));
+        self.theimageview.bounds = [[UIScreen mainScreen] bounds];
     }
     else {
-       self.view.transform = CGAffineTransformMakeRotation(180.0);
+        self.view.transform = CGAffineTransformIdentity;
+        self.view.transform = CGAffineTransformMakeRotation(M_PI);
+        self.view.bounds = [[UIScreen mainScreen] bounds];
+        
+        self.theimageview.transform = CGAffineTransformIdentity;
+        self.theimageview.transform = CGAffineTransformMakeRotation(M_PI);
+        self.theimageview.bounds = [[UIScreen mainScreen] bounds];
     }
+/*     CGRect thescreen = [[UIScreen mainScreen] bounds];
+    switch ( interfaceOrientation ) {
+        case UIInterfaceOrientationPortrait:
+        case UIInterfaceOrientationPortraitUpsideDown:
+            theimageview.frame = thescreen;
+            break;
+        default:
+            theimageview.frame = CGRectMake( thescreen.origin.x, thescreen.origin.y, thescreen.size.height, thescreen.size.width );
+            break;
+    }*/
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+
     [super  viewWillAppear:animated];
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    /*NSLog(@"imageview width: %f, imageview height: %f", theimageview.frame.size.width, theimageview.frame.size.height);
     
-    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
+    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        ;
+    }
+    else if(self.interfaceOrientation == UIInterfaceOrientationLandscapeLeft){
+        self.theimageview.transform = CGAffineTransformMakeRotation(M_PI * 270.0 / 180.0);
+    }
+    else if(self.interfaceOrientation == UIInterfaceOrientationLandscapeRight){
+        self.theimageview.transform = CGAffineTransformMakeRotation(M_PI * 90.0 / 180.0);
+    }
+    else {
+        self.theimageview.transform = CGAffineTransformMakeRotation(M_PI);
+    }*/
+    
+    
+    
+   // [UIView setAnimationDuration:3];
+    if(theimage) {
+        [theimageview setImage: theimage];
+        //theimage.size;
+    }
+
+
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+
+/*    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
     {
         CGRect thescreen = [[UIScreen mainScreen] bounds];
         thescreen.size.height += [UIApplication
@@ -96,7 +194,7 @@
                                   sharedApplication].statusBarFrame.size.height;
         CGRect swap = CGRectMake(thescreen.origin.x, thescreen.origin.y, thescreen.size.height, thescreen.size.width);
         self.view.frame = swap;
-    }
+    }*/
     //CGRect thescreen = [[UIScreen mainScreen] bounds];
     //[self.view setFrame:thescreen];
 }
@@ -104,7 +202,7 @@
 {
     [super  viewWillDisappear:animated];
     
-   // [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 - (void)doPinch:(UIPinchGestureRecognizer *)pinch
 {

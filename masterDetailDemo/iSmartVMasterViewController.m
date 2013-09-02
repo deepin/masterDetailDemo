@@ -173,6 +173,13 @@
     //self.testResult.text = @"Success!";
     
 }
-
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    NSDictionary *userInfo = @{
+                               @"toInterfaceOrientation":@(toInterfaceOrientation),
+                               @"duration":@(duration)};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"willAnimateRotationToInterfaceOrientation" object:nil userInfo:userInfo];
+    
+    NSLog(@"notification");
+}
 
 @end
