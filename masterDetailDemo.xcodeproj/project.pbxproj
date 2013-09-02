@@ -95,6 +95,10 @@
 		263A43BF17C34D4E002CD65B /* iSmartVMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSmartVMasterViewController.m; sourceTree = "<group>"; };
 		263A43C117C34D4E002CD65B /* iSmartVDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iSmartVDetailViewController.h; sourceTree = "<group>"; };
 		263A43C217C34D4E002CD65B /* iSmartVDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSmartVDetailViewController.m; sourceTree = "<group>"; };
+		2673E7ED17D4585900AB3803 /* MGSplitDividerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGSplitDividerView.h; sourceTree = "<group>"; };
+		2673E7EE17D4585900AB3803 /* MGSplitDividerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGSplitDividerView.m; sourceTree = "<group>"; };
+		2673E7EF17D4585900AB3803 /* MGSplitCornersView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGSplitCornersView.h; sourceTree = "<group>"; };
+		2673E7F017D4585900AB3803 /* MGSplitCornersView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGSplitCornersView.m; sourceTree = "<group>"; };
 		267EA28317C7069F008F0C17 /* iSmartVDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iSmartVDetailTableViewCell.h; path = customedCell/iSmartVDetailTableViewCell.h; sourceTree = "<group>"; };
 		267EA28417C7069F008F0C17 /* iSmartVDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iSmartVDetailTableViewCell.m; path = customedCell/iSmartVDetailTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +177,10 @@
 		2617DDED17CF16130082DC67 /* splitview */ = {
 			isa = PBXGroup;
 			children = (
+				2673E7ED17D4585900AB3803 /* MGSplitDividerView.h */,
+				2673E7EE17D4585900AB3803 /* MGSplitDividerView.m */,
+				2673E7EF17D4585900AB3803 /* MGSplitCornersView.h */,
+				2673E7F017D4585900AB3803 /* MGSplitCornersView.m */,
 				2617DDEE17CF16210082DC67 /* MGSplitViewController.h */,
 				2617DDEF17CF16210082DC67 /* MGSplitViewController.m */,
 			);

@@ -75,6 +75,12 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willAnimateRotationToInterfaceOrientation:) name:@"willAnimateRotationToInterfaceOrientation" object:nil];
     }
 }
+- (void)willAnimateRotationToInterfaceOrientation:(NSNotification *)notification {
+    NSLog(@"received notification!");
+    UIInterfaceOrientation toOrientation = (UIInterfaceOrientation)[notification.userInfo[@"toOrientation"] intValue];
+    NSTimeInterval duration = (UIInterfaceOrientation)[notification.userInfo[@"duration"] floatValue];
+    [self willAnimateRotationToInterfaceOrientation:toOrientation duration:duration];
+}
 
 - (void)viewDidUnload
 {
@@ -190,17 +196,14 @@
     if ([dest respondsToSelector:@selector(setTheimage:)]) {
         [dest setValue:[UIImage imageNamed:@"f485b7df2b84d26895ee3779.jpg"] forKey:@"theimage"];
     }
-    if(!dest.theTableViewControllers){
-        NSArray *tmp = self.splitViewController.viewControllers;
-        dest.theTableViewControllers = [NSArray arrayWithObjects:[tmp objectAtIndex:0], [tmp objectAtIndex:1], nil];
-    }
+
     //发布虚假旋转消息，促使系统调用splitviewcontroller被我修改的代理函数
     NSDictionary *userInfo = @{
                                @"toInterfaceOrientation":@(self.interfaceOrientation),
                                @"duration":@(1)};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"willAnimateRotationToInterfaceOrientation" object:nil userInfo:userInfo];
     
-    NSLog(@"notification detailTable");
+    NSLog(@"sending notification: detailviewcontroller");
     
     
     //[self.splitViewController.viewControllers objectAtIndex:0];
@@ -210,18 +213,22 @@
 
 - (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
 {
-    NSLog(@"notification got!");
+    
     if(orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown){
+        NSLog(@"respond: shouldHide: porttrait!");
         return YES;
     }
     else if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight){
+        NSLog(@"respond: shouldHide: landscape: %d", shouldHideMaster);
         return self.shouldHideMaster;
     }
+    NSLog(@"respond: shouldHide: default: NO!");
     return NO;
 }
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
+    NSLog(@"respond: willHide!");
     barButtonItem.title = NSLocalizedString(@"Master", @"Master");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
@@ -229,6 +236,7 @@
 
 - (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
+    NSLog(@"respond: willShow!");
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;

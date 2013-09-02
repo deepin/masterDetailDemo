@@ -130,7 +130,7 @@
 	_vertical = YES;
 	_masterBeforeDetail = YES;
 	_splitPosition = MG_DEFAULT_SPLIT_POSITION;
-	CGRect divRect = self.view.bounds;
+	CGRect divRect = self.view.bounds;////////////////////
 	if ([self isVertical]) {
 		divRect.origin.y = _splitPosition;
 		divRect.size.height = _splitWidth;

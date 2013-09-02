@@ -78,6 +78,16 @@
         //theimageview.transform = CGAffineTransformMakeScale(0.6f, 0.6f);
 
     }
+    if(!self.theTableViewControllers){
+        UISplitViewController* splitViewController = self.splitViewController;
+        UINavigationController *navigationController = [splitViewController.viewControllers objectAtIndex:0];
+        UIViewController* c0 =  [navigationController.viewControllers objectAtIndex:0];
+        
+        navigationController = [splitViewController.viewControllers objectAtIndex:1];
+        UIViewController* c1 =  [navigationController.viewControllers objectAtIndex:0];
+        
+        self.theTableViewControllers = [NSArray arrayWithObjects:c0, c1, nil];
+    }
 
 
 /*    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.19.18.184:8000/ReportIosServer/2013/07/22/ChenDeGao_10002_150212/page/1"]];
@@ -90,7 +100,7 @@
 }
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation) interfaceOrientation duration:(NSTimeInterval)duration
 {   
-   NSLog(@"noti got");
+   //NSLog(@"noti got");
     
     CGRect thescreen = [[UIScreen mainScreen] bounds];
     float tmp = thescreen.size.width;
@@ -201,12 +211,14 @@
     [super  viewWillDisappear:animated];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    //[[self.theTableViewControllers objectAtIndex:1] setValue:NO forKey:@"shouldHideMaster"];
+    ((iSmartVDetailViewController*)[self.theTableViewControllers objectAtIndex:1]).shouldHideMaster = NO;
     NSDictionary *userInfo = @{
                                @"toInterfaceOrientation":@(self.interfaceOrientation),
                                @"duration":@(1)};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"willAnimateRotationToInterfaceOrientation" object:nil userInfo:userInfo];
     
-    NSLog(@"notification  showPic");
+    NSLog(@"sending notification: showPic");
     
     
 }
