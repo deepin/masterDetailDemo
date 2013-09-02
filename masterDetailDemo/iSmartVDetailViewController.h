@@ -11,13 +11,7 @@
 #define _test
 #endif
 @interface iSmartVDetailViewController : UITableViewController <UISplitViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
-@property float masterWidth;
-@property (strong, nonatomic) id detailItem;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
-
-#ifdef _test
-@property (strong, nonatomic) NSArray *computers;
-#endif
-
+@property (strong, nonatomic) id selectedPatient;
+@property (strong, nonatomic) NSMutableArray* reports;//array of reports belong to selectedPatient
 @end
