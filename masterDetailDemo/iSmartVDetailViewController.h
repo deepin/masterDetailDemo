@@ -13,9 +13,10 @@
 @interface iSmartVDetailViewController : UITableViewController <UISplitViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property float masterWidth;
 @property (strong, nonatomic) id detailItem;
-
+@property (strong, nonatomic) NSArray* back4split;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
-
+@property  CGRect defaultFrame;
+@property BOOL shouldHideMaster;
 #ifdef _test
 @property (strong, nonatomic) NSArray *computers;
 #endif

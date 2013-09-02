@@ -23,7 +23,8 @@
 @end
 
 @implementation iSmartVDetailViewController
-
+@synthesize back4split;
+@synthesize shouldHideMaster;
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem
@@ -53,11 +54,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.defaultFrame = self.view.frame;
     UISplitViewController *splitviewctrl = self.splitViewController;
     UIViewController *masterController = [splitviewctrl.viewControllers objectAtIndex:0];
     self.masterWidth = masterController.view.frame.size.width;
     
     self.title = @"the detail view";
+    self.shouldHideMaster = NO;
 #ifdef _test
     NSDictionary *row1 = [[NSDictionary alloc] initWithObjectsAndKeys: @"front", @"viewDirection", @"2013-08-01-10:20:34", @"date", nil];
     NSDictionary *row2 = [[NSDictionary alloc] initWithObjectsAndKeys: @"left", @"viewDirection", @"2013-08-01-10:20:36", @"date", nil];
@@ -65,6 +69,11 @@
     NSDictionary *row4 = [[NSDictionary alloc] initWithObjectsAndKeys: @"3d", @"viewDirection", @"2013-08-01-10:20:39", @"date", nil];
     self.computers = [[NSArray alloc] initWithObjects:row1, row2, row3, row4, nil];
 #endif
+    
+    if (self) {
+        // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willAnimateRotationToInterfaceOrientation:) name:@"willAnimateRotationToInterfaceOrientation" object:nil];
+    }
 }
 
 - (void)viewDidUnload
@@ -131,7 +140,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    /*if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         
         
     }
@@ -147,7 +156,7 @@
     [UIView setAnimationDuration:1];
     [myDelegate.window addSubview:contentViewController.view];
    // [myDelegate.window bringSubviewToFront:contentViewController.view];
-	[UIView commitAnimations];
+	[UIView commitAnimations];*/
 
 }
 
@@ -155,16 +164,16 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    self.shouldHideMaster = YES;
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         //NSDate *object = [[_objectsArray objectAtIndex: indexPath.section] objectAtIndex:indexPath.row ];
         //[[segue destinationViewController] setDetailItem:object];
     }
 
-/*    iSmartVShowImageViewController *dest = segue.destinationViewController;
-    dest.masterWidth = self.masterWidth;//[dest setValue: self.masterWidth forKey:@"masterWidth" ];
+    iSmartVShowImageViewController *dest = segue.destinationViewController;
     
-    iSmartVAppDelegate *myDelegate = (((iSmartVAppDelegate*) [UIApplication sharedApplication].delegate));
+/*    iSmartVAppDelegate *myDelegate = (((iSmartVAppDelegate*) [UIApplication sharedApplication].delegate));
     
     
     CGRect newframe =  myDelegate.window.frame;
@@ -178,9 +187,38 @@
     dest.view.frame = newframe3;
     dest.theimageview.frame = newframe4;
     [myDelegate.window bringSubviewToFront:self.view];*/
+    if ([dest respondsToSelector:@selector(setTheimage:)]) {
+        [dest setValue:[UIImage imageNamed:@"f485b7df2b84d26895ee3779.jpg"] forKey:@"theimage"];
+    }
+    if(!dest.theTableViewControllers){
+        NSArray *tmp = self.splitViewController.viewControllers;
+        dest.theTableViewControllers = [NSArray arrayWithObjects:[tmp objectAtIndex:0], [tmp objectAtIndex:1], nil];
+    }
+    //发布虚假旋转消息，促使系统调用splitviewcontroller被我修改的代理函数
+    NSDictionary *userInfo = @{
+                               @"toInterfaceOrientation":@(self.interfaceOrientation),
+                               @"duration":@(1)};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"willAnimateRotationToInterfaceOrientation" object:nil userInfo:userInfo];
+    
+    NSLog(@"notification detailTable");
+    
+    
+    //[self.splitViewController.viewControllers objectAtIndex:0];
 }
 
 #pragma mark - Split view
+
+- (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation
+{
+    NSLog(@"notification got!");
+    if(orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown){
+        return YES;
+    }
+    else if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight){
+        return self.shouldHideMaster;
+    }
+    return NO;
+}
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {

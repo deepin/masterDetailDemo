@@ -20,7 +20,7 @@
 @implementation iSmartVMasterViewController
 @synthesize patients;
 @synthesize reports;
-@synthesize defaultWidth;
+@synthesize defaultFrame;
 - (void)awakeFromNib
 {
     self.clearsSelectionOnViewWillAppear = NO;
@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.defaultWidth = self.view.frame.size.width;
+   // self.defaultWidth = self.view.frame.size.width;
     
     self.title = @"the master view";
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -40,6 +40,7 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (iSmartVDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.defaultFrame = self.view.frame;
 }
 
 - (void)didReceiveMemoryWarning
@@ -174,12 +175,7 @@
     
 }
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    NSDictionary *userInfo = @{
-                               @"toInterfaceOrientation":@(toInterfaceOrientation),
-                               @"duration":@(duration)};
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"willAnimateRotationToInterfaceOrientation" object:nil userInfo:userInfo];
-    
-    NSLog(@"notification");
+
 }
 
 @end

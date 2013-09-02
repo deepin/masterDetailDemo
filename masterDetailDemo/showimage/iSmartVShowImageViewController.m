@@ -20,6 +20,7 @@
 @synthesize theimage;
 @synthesize imageViewRect;
 @synthesize masterWidth;
+@synthesize theTableViewControllers;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,11 +29,6 @@
        // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willAnimateRotationToInterfaceOrientation:) name:@"willAnimateRotationToInterfaceOrientation" object:nil];
     }
     return self;
-}
-- (void)willAnimateRotationToInterfaceOrientation:(NSNotification *)notification {
-    UIInterfaceOrientation toOrientation = (UIInterfaceOrientation)[notification.userInfo[@"toOrientation"] intValue];
-    NSTimeInterval duration = (UIInterfaceOrientation)[notification.userInfo[@"duration"] floatValue];
-    [self willAnimateRotationToInterfaceOrientation:toOrientation duration:duration];
 }
 
 
@@ -60,13 +56,14 @@
     //self.wantsFullScreenLayout = YES;
     CGRect thescreen = [[UIScreen mainScreen] bounds];
     
-   /* if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)){
-        float tmp = thescreen.size.width;
-        thescreen.size.width = thescreen.size.height;
-        thescreen.size.height = tmp;
-    }*/
+  // if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)){
+  //      float tmp = thescreen.size.width;
+   //     thescreen.size.width = thescreen.size.height;
+   //     thescreen.size.height = tmp;
+   // }
     
-    self.view.frame = thescreen;
+   // self.view.frame = thescreen;
+    //self.view.bounds = thescreen;
     if(!theimageview){
         
         theimageview = [[UIImageView alloc] initWithFrame:thescreen];
@@ -74,7 +71,8 @@
             theimageview.contentMode = UIViewContentModeScaleAspectFill;
             
         }
-        [self.view insertSubview:theimageview belowSubview: _backButton];
+        [self.view addSubview:theimageview];
+        //[self.view insertSubview:theimageview belowSubview: _backButton];
         // CGRect thescreen = [[UIScreen mainScreen] bounds];
         // [contentViewController.view setFrame:thescreen];
         //theimageview.transform = CGAffineTransformMakeScale(0.6f, 0.6f);
@@ -99,7 +97,7 @@
     thescreen.size.width = thescreen.size.height;
     thescreen.size.height = tmp;
     
-    if (UIInterfaceOrientationIsPortrait( UIInterfaceOrientationPortrait)) {
+/*    if (UIInterfaceOrientationIsPortrait( UIInterfaceOrientationPortrait)) {
         self.view.transform = CGAffineTransformIdentity;
         self.view.transform = CGAffineTransformMakeRotation(0);
         self.view.bounds = [[UIScreen mainScreen] bounds];
@@ -134,7 +132,7 @@
         self.theimageview.transform = CGAffineTransformIdentity;
         self.theimageview.transform = CGAffineTransformMakeRotation(M_PI);
         self.theimageview.bounds = [[UIScreen mainScreen] bounds];
-    }
+    }*/
 /*     CGRect thescreen = [[UIScreen mainScreen] bounds];
     switch ( interfaceOrientation ) {
         case UIInterfaceOrientationPortrait:
@@ -177,7 +175,7 @@
 
 
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+   // [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 
 /*    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
     {
@@ -203,6 +201,14 @@
     [super  viewWillDisappear:animated];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    NSDictionary *userInfo = @{
+                               @"toInterfaceOrientation":@(self.interfaceOrientation),
+                               @"duration":@(1)};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"willAnimateRotationToInterfaceOrientation" object:nil userInfo:userInfo];
+    
+    NSLog(@"notification  showPic");
+    
+    
 }
 - (void)doPinch:(UIPinchGestureRecognizer *)pinch
 {
@@ -212,6 +218,7 @@
         
         [theimageview setImage:[UIImage imageNamed:@"f485b7df2b84d26895ee3779.jpg"]];//label.font = [label.font fontWithSize:initialFontSize * pinch.scale];
     }
+    
     
 }
 
@@ -251,6 +258,6 @@
 - (IBAction)back2split:(id)sender
 {
     [self.view removeFromSuperview];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:Nil];
+    //[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:Nil];
 }
 @end
